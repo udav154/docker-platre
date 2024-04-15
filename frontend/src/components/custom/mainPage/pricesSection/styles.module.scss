@@ -1,0 +1,41 @@
+.listFirt {
+  li {
+  position: relative; 
+  line-height: 1.5;
+  padding-left: 24px; 
+  }
+
+  li::before {
+    content: ''; 
+    position: absolute;
+    top: 50%; 
+    left: 0;
+    transform: translateY(-50%); 
+    width: 16px;
+    height: 16px; 
+    background-image: url('/listMarker1.svg'); 
+    background-size: cover; 
+    background-position: center; 
+  }
+}
+
+.listSecond {
+  li {
+  position: relative; 
+  line-height: 1.5;
+  padding-left: 24px; 
+  }
+
+  li::before {
+    content: ''; 
+    position: absolute;
+    top: 50%; 
+    left: 0;
+    transform: translateY(-50%); 
+    width: 16px;
+    height: 16px; 
+    background-image: url('/listMarker2.svg'); 
+    background-size: cover; 
+    background-position: center; 
+  }
+}
