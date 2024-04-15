@@ -28,7 +28,7 @@ export async function ProjectSection() {
             </React.Fragment>
           ))}
         </div>
-        <button className="h-temp-2 w-fit border rounded-md text-white border-gold py-4 px-28 text-nowrap">
+        <button className="min-h-temp-2 w-fit border rounded-md text-white border-gold py-4 px-28 text-nowrap">
           <p className="leading-none">Все проекты</p>
         </button>
       </div>

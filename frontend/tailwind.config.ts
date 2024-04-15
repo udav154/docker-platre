@@ -18,6 +18,27 @@ const config = {
       },
     },
     extend: {
+      backgroundColor: {
+        'black-opacity': 'rgba(24, 24, 24, 0.8)',
+      },
+      boxShadow: {
+        shadow1: '25px 25px 25px 0 rgba(0, 0, 0, 0.5)',
+      },
+      fontFamily: {
+        "first": "PT_Sans sans-serif" ,
+        "second": "Playfair_Display_SC sans-serif",
+      },
+      spacing: {
+        'temp-1': '54px',
+        'temp-2': '70px',
+        '550px': '550px',
+        '1px': '1px',
+        "100px": "100px",
+      },
+      colors: {
+        gold: '#C4A25E',
+        main: '#0F2117',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

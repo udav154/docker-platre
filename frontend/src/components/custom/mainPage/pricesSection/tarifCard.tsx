@@ -32,7 +32,7 @@ export function TarifCard({
 
   
   return (
-      <div className='w-full h-full min-h-20 border border-gold bg-black-opacity backdrop-blur-lg pt-12 pb-6 px-12 flex flex-col justify-between'>
+      <div className='w-full h-full min-h-20 border border-gold bg-black-opacity backdrop-blur-lg pt-12 pb-6 px-12 flex flex-col justify-between shadow-shadow1'>
         <div>
           <p className="text-4xl text-white font-second">
             {tarif.attributes.name}

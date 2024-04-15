@@ -15,7 +15,7 @@ export function TarifPharagraph({
 
   const par = children[0]
   if (!par?.children) {
-    return (<li className="mb-3 relative before:"><p>{par.text}</p></li>)
+    return (<li className="mb-3 relative"><p>{par.text}</p></li>)
   }
 
   return (
