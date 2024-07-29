@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { PT_Sans, Playfair_Display_SC, Sora } from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 import Head from "next/head";
 import { Header } from "@/components/custom/header";
+import { Footer } from "@/components/custom/footer";
 
 const secondFont = Playfair_Display_SC({
    weight:['400', '700'],
@@ -77,16 +78,12 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <body>
+      <body className="">
       <Header/>
       <main className="mx-auto">
         {children}
       </main>
-        {/* <footer>
-          <div>
-          FOOTER
-          </div>
-        </footer> */}
+      <Footer />
       </body>
     </html>
   );

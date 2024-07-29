@@ -32,21 +32,21 @@ export function TarifCard({
 
   
   return (
-      <div className='w-full h-full min-h-20 border border-gold bg-black-opacity backdrop-blur-lg pt-12 pb-6 px-12 flex flex-col justify-between shadow-shadow1'>
+      <div className='w-full h-full min-h-20 border border-gold bg-black-opacity backdrop-blur-lg pt-12 pb-6 px-12 flex flex-col gap-16 deskS:gap-8 justify-between shadow-shadow1 desk:[&:last-child]:col-[1/3] deskS:[&:last-child]:col-[auto] deskS:shadow-none deskS:p-[15px]'>
         <div>
-          <p className="text-4xl text-white font-second">
+          <p className="text-4xl text-white font-second deskS:text-3xl">
             {tarif.attributes.name}
           </p>
-          <div className="border border-gold w-full my-8"/>
-          <ul className={clsx("text-xl text-white font-normal", styles.listFirt)}>
+          <div className="border border-gold w-full my-8 deskS:my-4"/>
+          <ul className={clsx("text-xl text-white font-normal deskS:text-sm", styles.listFirt)}>
             {
               list.children.map((service, idx) => <TarifPharagraph key={idx} pharagraph={service}/>)
             }
           </ul>
         </div>
         <div>
-          <button className="h-temp-2 w-fit border text-white border-gold py-4 px-20 text-nowrap">
-            <p className="leading-none text-xl">Пример</p>
+          <button className="h-temp-2 deskS:h-[50px] w-fit border text-white border-gold py-4 deskS:py-3 px-20 deskS:px-14 text-nowrap">
+            <p className="leading-none text-xl deskS:text-lg">Пример</p>
           </button>
           <div className="border border-gold w-full my-8"/>
           <p className="text-xl text-white font-second">

@@ -4,7 +4,7 @@ export function AboutUsSection() {
 
   return (
     <section className="relative w-screen bg-white">
-      <div className="relative container mx-auto flex gap-28 justify-center w-full h-auto py-100px">
+      <div className="relative container mx-auto flex gap-28 justify-center w-full h-auto py-100px deskS:flex-col-reverse deskS:items-center deskS:pb-[40px] deskS:pt-[20px] deskS:px-mobile deskS:gap-10">
         <Image 
           alt='aboutUs'
           src={'/aboutUs.png'}
