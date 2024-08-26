@@ -16,7 +16,7 @@ export function Header() {
     setIsMenuOpen(prev => !prev)
   }
   return (
-    <header className="fixed h-24 w-full z-10 tabletS:h-16" style={{background: "linear-gradient(180deg, #000000 25.56%, #000000a1 60.64%, #0000006e 75.64%, transparent 100%)"}}>
+    <header className="fixed h-header w-full z-10 tabletS:h-16" style={{background: "linear-gradient(180deg, #000000 25.56%, #000000a1 60.64%, #0000006e 75.64%, transparent 100%)"}}>
       <div className="container flex mx-auto h-full items-center justify-between px-4 py-3">
         <Logo />
         <div className="deskS:hidden">

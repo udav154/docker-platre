@@ -38,7 +38,7 @@ export function EstimateSection() {
   }
 
   return (
-    <section className="relative w-full min-h-screen h-full grid grid-rows-1 bg-main">
+    <section className="relative w-full min-h-screen grid grid-rows-1 bg-main">
       <div className="relative container h-full flex flex-col items-center gap-8 mx-auto w-full pb-100px pt-10 deskS:pb-[40px] deskS:pt-[20px] deskS:px-mobile">
         <BrandHeader />
 

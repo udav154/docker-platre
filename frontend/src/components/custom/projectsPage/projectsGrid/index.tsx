@@ -5,7 +5,7 @@ const API_URL = process.env.API_URL;
 const API_TOKEN = process.env.API_TOKEN;
 
 export async function ProjectGrid() {
-    const res = await fetch(`${API_URL}/api/news?populate=preview`, {
+    const res = await fetch(`${API_URL}/api/news?populate=images`, {
       headers: {
         authorization: `bearer ${API_TOKEN}`,
       },

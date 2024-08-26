@@ -1,18 +1,21 @@
 'use client'
 import { IProject } from '@/interfaces'
+import { links } from '@/settings/links'
 import Link from 'next/link'
 interface IProjectCardParams {
   project: IProject
 }
 
 export function ProjectCard({ project }: IProjectCardParams) {
+  const preview = project.attributes.images.data[0]
+
   return (
-    <Link href={'/'} className='flex items-center justify-center'>
-      <div className='w-full h-full grid min-h-[450px] duration-300 hover:scale-105 mobile:min-h-[400px] max-h-[450px]'>
+    <Link href={links.project(project.id)} className='flex items-center justify-center h-fit'>
+      <div className='grow-[1] duration-300 hover:scale-105 w-full h-full'>
         <div
-          className='w-full h-full bg-cover bg-center bg-no-repeat p-5 flex items-end'
+          className='bg-cover bg-center bg-no-repeat p-5 flex items-end  w-full h-full'
           style={{
-            backgroundImage: `url(${project.attributes.preview.data.attributes.url})`,
+            backgroundImage: `url(${preview.attributes.url})`,
           }}
         >
           <p className='text-lg text-white'>{project.attributes.title}</p>

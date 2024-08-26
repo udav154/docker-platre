@@ -38,6 +38,7 @@ const config = {
         "second": "Playfair_Display_SC sans-serif",
       },
       spacing: {
+        'header': '94px',
         'mobile': '15px',
         '400px': '400px',
         'm40px': '-40px',
@@ -73,6 +74,8 @@ const config = {
         'tabletS': {'max': '560px'},
         'mobile': {'max': '440px'},
         'mobileS': {'max': '375px'},
+        "max800": {'max': '800px'},
+        "max550": {'max': '550px'},
       }
     },
   },

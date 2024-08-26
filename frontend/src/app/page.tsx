@@ -14,7 +14,7 @@ export default function Home() {
       <AboutUsSection />
       <ProjectSection />
       {/* <PricesSection /> */}
-      {/* <StepsSection /> */}
+      <StepsSection />
       <EstimateSection />
       <LinkWithUs />
     </>

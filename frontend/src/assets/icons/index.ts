@@ -1,6 +1,7 @@
 export { default as BrandLogo } from './brandLogo.svg';
 export { default as CheckIcon } from './check.svg';
 export { default as InstIcon } from './instagram.svg';
+export { default as TelegramIcon } from './telegramIcon.svg'
 export { default as MailIcon } from './mail.svg';
 export { default as UserIcon } from './user.svg';
 export { default as PhoneIcon } from './phone.svg';

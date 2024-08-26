@@ -1,5 +1,4 @@
-import { IProject, ITarif } from "@/interfaces";
-import { ProjectCard } from "../projectSection/projectCard";
+import { ITarif } from "@/interfaces";
 import React from "react";
 import { TarifCard } from "./tarifCard";
 
