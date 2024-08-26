@@ -2,7 +2,7 @@ export interface IProject {
   id: number,
   attributes: {
     description: string,
-    preview: {
+    images: {
       data: {
         id: number,
         attributes: {
@@ -25,7 +25,7 @@ export interface IProject {
             }
           }
         }
-    }},
+    }[]},
     title: string,
     text: string
   }

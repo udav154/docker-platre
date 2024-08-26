@@ -7,7 +7,7 @@ import Image from "next/image";
 export function LinkWithUs() {
 
   return (
-    <section className="relative w-full min-h-screen h-full grid grid-rows-1 bg-white">
+    <section className="relative w-full min-h-screen grid grid-rows-1 bg-white">
       <div className="relative container h-full flex flex-col items-center gap-8 mx-auto w-full py-100px deskS:py-[50px] deskS:px-mobile">
       <div className="border-t border-main h-1px w-full"/>
 

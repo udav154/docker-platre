@@ -4,6 +4,12 @@
   
 html, body {
   @apply bg-main;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 @layer base {

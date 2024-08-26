@@ -1,4 +1,5 @@
 export const links = {
   home: () => '/',
-  projects: () => '/projects'
+  projects: () => '/projects',
+  project: (id: any) => `/projects/${id}`
 }

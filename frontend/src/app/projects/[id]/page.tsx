@@ -1,37 +1,30 @@
-'use client'
-
-import { useParams } from "next/navigation"
-import { useEffect, useState } from "react";
+import React from 'react';
 
 const API_URL = process.env.API_URL;
 const API_TOKEN = process.env.API_TOKEN;
 
-const getProject = async (id) => {
-  'use client'
-  return  await fetch(`${API_URL}/api/news/${id}`, {
+const getProject = async (id: string) => {
+  const response = await fetch(`${API_URL}/api/news/${id}`, {
     headers: {
-      authorization: `bearer ${API_TOKEN}`,
+      authorization: `Bearer ${API_TOKEN}`,
     },
   });
-} 
 
+  if (!response.ok) {
+    throw new Error('Failed to fetch project');
+  }
 
-export default function ProjectPage ({}) {
-  const { id } = useParams()
-  const [project, setProject] = useState(null)
+  return await response.json();
+};
 
+export default async function ProjectPage({ params }: { params: { id: string } }) {
+  const project = await getProject(params.id);
+  const { data: { attributes } } = project
 
-  useEffect(() => {
-   getProject(id).then(res => {
-    console.log('res', res)
-   })
-
-  }, [id])
   return (
-    <>
-      <div className="h-full">
-
-      </div>
-    </>
-  )
+    <div className="h-full pt-header relative container">
+      <h1>{attributes.title}</h1>
+      <p>{attributes.description}</p>
+    </div>
+  );
 }
