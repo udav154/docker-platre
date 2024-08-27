@@ -1,0 +1,129 @@
+@mixin mobile-550 {
+  @media screen and (max-width: 550px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 700px) {
+    @content;
+  }
+}
+
+@mixin laptop-xs {
+  @media screen and (max-width: 1300px) {
+    @content;
+  }
+}
+
+
+.slider {
+  margin-top: 30px;
+  margin-bottom: 25px;
+  position: relative;
+
+  &_big,
+  &_small {
+    max-height: 616px;
+    position: relative;
+    :global {
+      .swiper-slide {
+        width: 100%;
+        border-radius: 15px;
+      }
+    }
+  }
+
+  &_small {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 70px; /* ширина затемнения */
+      pointer-events: none; /* чтобы затемнение не перекрывало кликабельные элементы */
+      z-index: 2;
+      right: 0;
+      background: linear-gradient(270deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%);
+      opacity: 0;
+      transition: .3s;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 70px; /* ширина затемнения */
+      pointer-events: none; /* чтобы затемнение не перекрывало кликабельные элементы */
+      z-index: 2;
+      left: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%);
+      transition: .3s;
+      opacity: 0;
+    }
+    
+    &[data-is-next='true'] {
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &[data-is-prev='true'] {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &_big {
+    margin-bottom: 30px;
+  }
+
+  &__image {
+    &_single,
+    &_big,
+    &_small {
+      // background-color: var(--gx-dropdown-hover);
+      width: 100%;
+      img {
+        border-radius: 15px;
+      }
+    }
+
+    &_single,
+    &_big {
+      height: 616px;
+      object-fit: contain;
+
+      @include laptop-xs {
+        height: 500px;
+      }
+      
+      @include mobile-550 {
+        height: 350px;
+      }
+    }
+
+    &_single {
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &_small {
+      height: 200px;
+      object-fit: cover;
+      
+      @include mobile {
+        height: 100px;
+      }
+    }
+  }
+}
