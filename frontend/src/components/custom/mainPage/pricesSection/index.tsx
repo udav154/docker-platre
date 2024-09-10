@@ -2,13 +2,13 @@ import { ITarif } from "@/interfaces";
 import React from "react";
 import { TarifCard } from "./tarifCard";
 
-const API_URL = process.env.API_URL;
-const API_TOKEN = process.env.API_TOKEN;
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+const NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 export async function PricesSection() {
-  const res = await fetch(`${API_URL}/api/tarifs?populate=preview`, {
+  const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/tarifs?populate=preview`, {
     headers: {
-      authorization: `bearer ${API_TOKEN}`,
+      authorization: `bearer ${NEXT_PUBLIC_API_TOKEN}`,
     },
   });
 

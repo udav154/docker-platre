@@ -12,7 +12,7 @@ import { LogoIcon } from "./logo"
 import Link from "next/link"
 import { links } from "@/settings/links"
 
-export const BurgerMenu = ({ open = false, handleMenu }) => {
+export const BurgerMenu = ({ open = false, handleMenu }: any) => {
 
   return (
   <Sheet open={open}>
