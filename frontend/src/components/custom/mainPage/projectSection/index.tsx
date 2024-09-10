@@ -5,18 +5,33 @@ import Link from "next/link";
 import { links } from "@/settings/links";
 import clsx from "clsx";
 import s from './projects.module.scss'
+import { IProject } from "@/interfaces";
+import { GetServerSideProps } from "next";
 
-const API_URL = process.env.API_URL;
-const API_TOKEN = process.env.API_TOKEN;
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+const NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
-export async function ProjectSection() {
-  const res = await fetch(`${API_URL}/api/news?populate=images`, {
+
+interface IProps {
+  projects?: IProject[]
+}
+
+
+export const getServerSideProps: GetServerSideProps<IProps> = async () => {
+  const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/news?populate=images`, {
     headers: {
-      authorization: `bearer ${API_TOKEN}`,
+      authorization: `bearer ${NEXT_PUBLIC_API_TOKEN}`,
     },
   });
+  const { data: projects } = await res.json();
 
-  const { data } = await res.json();
+  return {
+    props: { projects },
+  };
+}
+
+export async function ProjectSection({projects}: IProps) {
+
   return (
     <section className="relative w-full min-h-screen grid grid-rows-1 bg-main">
       <div className="relative container h-full flex flex-col items-center gap-16 mx-auto w-full pb-100px pt-10 deskS:pb-[40px] deskS:pt-[20px] deskS:px-mobile deskS:gap-10">
@@ -26,7 +41,7 @@ export async function ProjectSection() {
         </h3>
         {/* <div className="w-full h-full grid grid-cols-4 gap-6 deskS:grid-cols-2 tablet:grid-cols-1"> */}
         <div className={clsx(s.cardsWrap, "w-full flex flex-wrap")} >
-          {data.map((item: any) => (
+          {projects?.map((item: any) => (
             <React.Fragment key={item.id}>
               <ProjectCard project={item}/>
             </React.Fragment>

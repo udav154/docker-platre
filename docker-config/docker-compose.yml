@@ -4,14 +4,15 @@ services:
   frontend: 
     build: 
       context: ../frontend
-      dockerfile: ../docker-config/Dockerfile.frontend
+      dockerfile: ../docker-config/Dockerfile.dev.frontend
     ports: 
       - "3000:3000"
     volumes: 
       - ../frontend:/opt
+    env_file: .env
     environment: 
-      API_TOKEN: ${API_TOKEN}
-      API_URL: ${API_URL}
+      NEXT_PUBLIC_API_TOKEN: ${NEXT_PUBLIC_API_TOKEN}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
     networks:
       - strapi
   cms: 
@@ -22,11 +23,12 @@ services:
     env_file: .env
     build: 
       context: ../cms
-      dockerfile: ../docker-config/Dockerfile.cms
+      dockerfile: ../docker-config/Dockerfile.dev.cms
     ports: 
       - "1337:1337"
     environment:
       APP_KEYS: ${APP_KEYS}
+      JWT_SECRET: ${JWT_SECRET}
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
       TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}

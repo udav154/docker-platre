@@ -2,13 +2,13 @@ import { ProjectSwiper } from '@/components/custom/projectPage/projectSwiper';
 import { IProject } from '@/interfaces';
 import React from 'react';
 
-const API_URL = process.env.API_URL;
-const API_TOKEN = process.env.API_TOKEN;
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+const NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 const getProject = async (id: string) => {
-  const response = await fetch(`${API_URL}/api/news/${id}?populate=images`, {
+  const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/news/${id}?populate=images`, {
     headers: {
-      authorization: `Bearer ${API_TOKEN}`,
+      authorization: `Bearer ${NEXT_PUBLIC_API_TOKEN}`,
     },
   });
 
