@@ -1,20 +1,45 @@
-FROM node:18-alpine
-
+FROM node:18-alpine AS builder
 WORKDIR /opt
-
-COPY package*.json ./
 
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
-RUN npm install
+COPY package*.json ./
+RUN npm install --frozen-lockfile
 
 COPY . .
-
 RUN npm run build
 
-RUN npm install -g serve
+FROM node:18-alpine
+WORKDIR /opt
 
-EXPOSE 5000
+COPY --from=builder /opt/node_modules ./node_modules
+COPY --from=builder /opt/.next ./.next
+COPY package.json package-lock.json ./
 
-CMD ["npm", "run", "dev"]
+ENV NEXT_TELEMETRY_DISABLED 1
+
+EXPOSE 8080
+CMD ["npm", "start"]
+
+
+# FROM node:18-alpine
+
+# WORKDIR /opt
+
+# COPY package*.json ./
+
+# ARG NEXT_PUBLIC_API_URL
+# ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
+# RUN npm install
+
+# COPY . .
+
+# RUN npm run build
+
+# RUN npm install -g serve
+
+# EXPOSE 5000
+
+# CMD ["npm", "run", "dev"]

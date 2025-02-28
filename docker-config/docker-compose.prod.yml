@@ -5,17 +5,19 @@ services:
     build:
       context: ../frontend
       dockerfile: ../docker-config/Dockerfile.prod.frontend
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
     ports:
-      - "8080:3000"
+      - "8080:8080"
     env_file: .env
-    
     networks:
       - app-network
-    environment: 
-      NEXT_PUBLIC_API_TOKEN: ${NEXT_PUBLIC_API_TOKEN}
+    environment:
       NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+      NEXT_PUBLIC_API_TOKEN: ${NEXT_PUBLIC_API_TOKEN}
 
   cms:
+    # image: cms-prod
     build:
       context: ../cms
       dockerfile: ../docker-config/Dockerfile.prod.cms
