@@ -1,8 +1,17 @@
 FROM node:18-alpine AS builder
 WORKDIR /opt
 
+# Получаем аргументы сборки
 ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_API_TOKEN
+ARG NEXT_PUBLIC_CLIENT_API_URL
+ARG NEXT_PUBLIC_SERVER_API_URL
+
+# Устанавливаем переменные окружения (будут доступны в процессе сборки)
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_TOKEN=$NEXT_PUBLIC_API_TOKEN
+ENV NEXT_PUBLIC_CLIENT_API_URL=$NEXT_PUBLIC_CLIENT_API_URL
+ENV NEXT_PUBLIC_SERVER_API_URL=$NEXT_PUBLIC_SERVER_API_URL
 
 COPY package*.json ./
 RUN npm install --frozen-lockfile
@@ -16,11 +25,12 @@ WORKDIR /opt
 COPY --from=builder /opt/node_modules ./node_modules
 COPY --from=builder /opt/.next ./.next
 COPY package.json package-lock.json ./
+COPY public public
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
 EXPOSE 8080
-CMD ["npm", "start"]
+CMD ["npm", "run", "start", "--", "-p", "8080"]
 
 
 # FROM node:18-alpine
