@@ -1,6 +1,7 @@
 'use client'
 
 import { IProject } from "@/interfaces";
+import { getMediaUrl } from "@/lib/utils";
 import { links } from "@/settings/links";
 import Link from "next/link";
 
@@ -24,7 +25,7 @@ export function Project({
         <div 
           className="w-full h-full bg-cover bg-center bg-no-repeat p-5 aspect-square flex items-end shadow-[27px_17px_8px_0px_rgba(0,0,0,0.18)]" 
           style={{ 
-            backgroundImage: `url(${preview.attributes.url})`,
+            backgroundImage: `url(${getMediaUrl(preview.attributes.url)})`,
           }}
         >
           <p 

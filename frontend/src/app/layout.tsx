@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { ReactQueryProvider } from '../providers/reactQueryProvider';
 import { PT_Sans, Playfair_Display_SC, Sora } from "next/font/google";
 import "./globals.scss";
-import Head from "next/head";
 import { Header } from "@/components/custom/header";
 import { Footer } from "@/components/custom/footer";
 
@@ -21,6 +21,7 @@ const firstFont = PT_Sans({
 export const metadata: Metadata = {
   title: "Platre",
   description: "Platre interior design",
+  keywords: ['дизайн интерьера', 'архитектура', 'Platre', 'Иваново дизайн интерьера', 'Иваново интерьер', 'Иваново интерьер'],
   icons: [
     {
       url: "/favicon-16x16.png",
@@ -74,17 +75,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${firstFont.variable} ${secondFont.variable}`}>
-      <Head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-      <body className="">
-      <Header/>
-      <main className="mx-auto grow-[1] w-full">
-        {children}
-      </main>
-      <Footer />
-      </body>
+      <ReactQueryProvider>
+        <body className="">
+        <Header/>
+        <main className="mx-auto grow-[1] w-full">
+          {children}
+        </main>
+        <Footer />
+        </body>
+      </ReactQueryProvider>
     </html>
   );
 }

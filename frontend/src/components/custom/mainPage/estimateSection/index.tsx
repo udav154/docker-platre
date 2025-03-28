@@ -95,7 +95,17 @@ export function EstimateSection() {
               <div>
                 <p  className="text-white text-xl checked:bg-white font-normal font-second deskS:text-lg">{'Площать (м2)'}</p>
               </div>
-              <Slider className="deskS:px-[35px]" defaultValue={[defaultEstimateValue]} value={[estimateValue]} max={maxEstimateValue} step={0.1} onValueChange={handleChangeSquare} />
+              <div
+                className="deskS:px-[35px]" 
+              >
+                <Slider 
+                  defaultValue={[defaultEstimateValue]} 
+                  value={[estimateValue]} 
+                  max={maxEstimateValue} 
+                  step={0.1} 
+                  onValueChange={handleChangeSquare} 
+                />
+              </div>
             </div>
             
             <div className="w-full flex justify-center">

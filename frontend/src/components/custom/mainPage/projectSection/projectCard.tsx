@@ -1,5 +1,6 @@
 'use client'
 import { IProject } from '@/interfaces'
+import { getMediaUrl } from '@/lib/utils'
 import { links } from '@/settings/links'
 import Link from 'next/link'
 interface IProjectCardParams {
@@ -15,7 +16,7 @@ export function ProjectCard({ project }: IProjectCardParams) {
         <div
           className='bg-cover bg-center bg-no-repeat p-5 flex items-end  w-full h-full'
           style={{
-            backgroundImage: `url(${preview.attributes.url})`,
+            backgroundImage: `url(${getMediaUrl(preview.attributes.url)})`,
           }}
         >
           <p className='text-lg text-white'>{project.attributes.title}</p>

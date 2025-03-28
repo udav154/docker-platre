@@ -6,6 +6,7 @@ import { PricesSection } from "@/components/custom/mainPage/pricesSection";
 import { ProjectSection } from "@/components/custom/mainPage/projectSection";
 import { StepsSection } from "@/components/custom/mainPage/stepsSection";
 
+
 export default function Home() {
 
   return (
