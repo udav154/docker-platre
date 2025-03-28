@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import { BrandHeader } from "../../brandHeader";
 import { ProjectCard } from "./projectCard";
@@ -6,31 +8,22 @@ import { links } from "@/settings/links";
 import clsx from "clsx";
 import s from './projects.module.scss'
 import { IProject } from "@/interfaces";
-import { GetServerSideProps } from "next";
+import { useProjects } from "@/hooks/useProjects";
+import { getApiBaseUrl } from "@/lib/api";
 
-const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
-const NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
+const API_URL = getApiBaseUrl();
+const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 
 interface IProps {
   projects?: IProject[]
 }
 
+export function ProjectSection() {
+  const { data: projects, isLoading, isError } = useProjects();
 
-export const getServerSideProps: GetServerSideProps<IProps> = async () => {
-  const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/news?populate=images`, {
-    headers: {
-      authorization: `bearer ${NEXT_PUBLIC_API_TOKEN}`,
-    },
-  });
-  const { data: projects } = await res.json();
-
-  return {
-    props: { projects },
-  };
-}
-
-export async function ProjectSection({projects}: IProps) {
+  if (isLoading) return <div className="text-white">Загрузка проектов...</div>;
+  if (isError) return <div className="text-red-500">Ошибка загрузки</div>;
 
   return (
     <section className="relative w-full min-h-screen grid grid-rows-1 bg-main">

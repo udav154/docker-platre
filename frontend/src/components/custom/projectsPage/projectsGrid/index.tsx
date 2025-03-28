@@ -1,31 +1,15 @@
 import { IProject } from "@/interfaces";
 import { Project } from "./project";
-
-
-const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
-const NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
-
-export async function getServerSideProps() {
-  const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/news?populate=images`, {
-    headers: {
-      authorization: `bearer ${NEXT_PUBLIC_API_TOKEN}`,
-    },
-  });
-  const { data: projects } = await res.json();
-
-  return {
-    props: { projects },
-  };
-
-}
+import { useProjects } from "@/hooks/useProjects";
+import { getProjects } from "@/lib/api";
 
 
 interface IProps {
   projects?: IProject[]
 }
 
-export async function ProjectGrid({projects}: IProps) {
-
+export async function ProjectGrid() {
+  const projects = await getProjects();
 
     return (
     <section className="relative w-full min-h-screen flex bg-main">

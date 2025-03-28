@@ -7,6 +7,7 @@ import { IProject } from '@/interfaces';
 import React, { useEffect, useMemo, useState } from 'react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import style from './projectSwiper.module.scss'
+import { getMediaUrl } from '@/lib/utils';
 
 interface IProps {
   images: IProject['attributes']['images']['data']
@@ -59,7 +60,7 @@ export const ProjectSwiper = ({ images }: IProps) => {
                     width={100}
                     height={100}
                     alt="Фото примера работы"
-                    src={slide.url}
+                    src={getMediaUrl(slide.url)}
                     className={style.slider__image_big}
                   />
                 </SwiperSlide>
@@ -91,7 +92,7 @@ export const ProjectSwiper = ({ images }: IProps) => {
                       width={150}
                       height={150}
                       alt="Фото примера работы"
-                      src={slide.url}
+                      src={getMediaUrl(slide.url)}
                       className={style.slider__image_small}
                     />
                   </SwiperSlide>
